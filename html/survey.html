@@ -1,0 +1,463 @@
+ <!DOCTYPE html>
+<html>
+<head>
+
+  <link href="/assets/css/style.css" rel="stylesheet" type="text/css">  
+  <script src="/lib/jquery.min.js"></script>
+	<script src="/js/survey.js" type="text/javascript"></script>
+	<title>BALANCE Survey</title>
+	<style>
+	fieldset{
+		margin-top:2em;
+		font-size:0.8em;
+	}
+	fieldset li{
+		margin-bottom:1em;
+		margin-left:2em;
+		padding-left:1em;
+		
+	}
+	#libconstab td, #partytab td{
+		width:75px;
+		padding:0 3px 0 3px;
+		text-align:center;
+		vertical-align:bottom;
+	}
+	legend{
+		font-weight:bold;
+	}
+	ol {
+		margin:0;
+		padding:0;
+	}
+	.bigfivetab{
+		font-size:0.9em;
+		border-collapse:collapse;
+	}
+	.bigfivetab td, .bigfivetab th{
+		border-bottom:1px solid #bbb;
+	}
+	.bigfivetab td{
+		padding-top:0.7em;
+		padding-bottom:0.7em;
+	}
+	.bigfivetab th{
+		width:100px;
+	}
+	.bigfivetab td.selection{
+		text-align:center;
+		width:100px;
+	}
+	.bigfivetab tr:nth-child(even) {
+	    background-color: #eef;
+	}
+	img{width:100px;float:left;}
+	
+	button{margin-top:0.5em;}
+	button.next{float:right;}
+	button.previous{float:left;}
+	
+	#progress{text-align:center;float:right;}
+	
+	ul.progress{
+		list-style:none;
+	    margin: 0;
+	    padding: 0;
+	}
+	
+	ul.progress li {
+	    background: #eee;
+	    display:inline-block;
+	    margin: 0 5px 0 5px;
+		border:1px solid #ddd;
+		width:20px;
+		height:20px;
+	}
+
+	ul.progress li.current {
+		background:#99f;
+		border:1px solid #88e;
+	}
+	.clear{clear:both;}
+
+	</style>
+</head>
+<body style="margin:1em;">
+<img src="./img/noarticles.jpeg"/>
+<div style="margin-left:110px;"><h2>Welcome to BALANCE!</h2>
+<div id="progress"><ul class="progress"><li id="progress1" class="current">&nbsp;</li><li id="progress2">&nbsp;</li><li id="progress3">&nbsp;</li></ul></div><p id="before" class="smaller">Before you get started, we've love for you to complete this short survey to help with our research.</p>
+<p class="smaller">If you have already taken this survey on another computer, please <a id="already" href="#">click here</a>.</p>
+<div id="balancesurvey_form">
+<form name="balancesurvey" id="balancesurvey" action="">
+	<input type="hidden" name="cid" id="cid" value="0"/>
+
+	<div class="clear"></div>
+	
+	<fieldset id="politicalpreferences">
+		<legend>First, we'd like to know a bit about your political preferences.</legend>
+		<ol>
+			<li>Here is a 7-point scale on which the political views that people might hold are arranged from extremely liberal to extremely conservative. Where would you place yourself on this scale, or haven't you thought much about this? <br /><br />
+				<table id="libconstab">
+					<tr>
+						<td><label for="libcons1">Extremely liberal</label></td>
+						<td><label for="libcons2">Liberal</label></td>
+						<td><label for="libcons3">Slightly liberal</label></td>
+						<td><label for="libcons4">Moderate</label></td>
+						<td><label for="libcons5">Slightly conservative</label></td>
+						<td><label for="libcons6">Conservative</label></td>
+						<td><label for="libcons7">Extremely conservative</label></td>
+						<td><label for="libcons0">Prefer not to answer</label></td></tr>
+					<tr>
+						<td>
+							<input type="radio" name="libcons" id="libcons1" value="1" />
+						</td><td>
+							<input type="radio" name="libcons" id="libcons2"  value="2" />
+						</td><td>
+							<input type="radio" name="libcons" id="libcons3" value="3" />
+						</td><td>
+							<input type="radio" name="libcons" id="libcons4"  value="4" />
+						</td><td>
+							<input type="radio" name="libcons" id="libcons5"  value="5" />
+						</td><td>
+							<input type="radio" name="libcons" id="libcons6" value="6" />
+						</td><td>
+							<input type="radio" name="libcons" id="libcons7"  value="7" />
+						</td><td>
+							<input type="radio" name="libcons" id="libcons0" value="0" />
+						</td></tr>
+				</table>
+				<br />
+			</li>
+			<li>Generally speaking, do you usually think of yourself as a Republican, a Democrat, an Independent, or what?<br /><br />
+				<table id="partytab">
+					<tr>
+						<td><label for="party1">Strong Democrat</label></td>
+						<td><label for="party2">Not very strong Democrat</label></td>
+						<td><label for="party3">Independent, close to democrat</label></td>
+						<td><label for="party4">Independent, neither party</label></td>
+						<td><label for="party5">Indepndent, close to Republican</label></td>
+						<td><label for="party6">Not very strong Republican</label></td>
+						<td><label for="party7">Strong Republican</label></td>
+						<td><label for="party0">Prefer not to answer</label></td>
+					</tr>
+					<tr>
+						<td>
+							<input type="radio" name="party" id="party1" value="1" />
+						</td><td>
+							<input type="radio" name="party" id="party2" value="2" />
+						</td><td>
+							<input type="radio" name="party" id="party3" value="3" />
+						</td><td>
+							<input type="radio" name="party" id="party4" value="4" />
+						</td><td>
+							<input type="radio" name="party" id="party5" value="5" />
+						</td><td>
+							<input type="radio" name="party" id="party6" value="6" />
+						</td><td>
+							<input type="radio" name="party" id="party7" value="7" />
+						</td><td>
+							<input type="radio" name="party" id="party0" value="0" />
+						</td></tr>
+				</table>
+			</li>
+			</ol>
+			<button type="button" class="tobigfive next"/>Next &rsaquo;&rsaquo;</button>
+	</fieldset>
+	<fieldset id="bigfive">
+		<legend>Next, we'd like to learn a bit more about you.</legend>
+		<p>Below, there are phrases describing people's behaviors. Please use the rating scale below to describe how accurately each statement describes you. Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself, in relation to other people you know of the same sex as you are, and roughly your same age. So that you can describe yourself in an honest manner, your responses will be kept in absolute confidence. Please read each statement carefully, and then fill in the bubble that corresponds to the number on the scale.</p>
+		<table class="bigfivetab">
+			<tr><td></td><th>Very inaccurate</th><th>Moderately Inaccurate</th><th>Neither Inaccurate nor Accurate</th><th>Moderately Accurate</th><th>Very Accurate</th></tr>
+			<tr><td>Am the life of the party</td>
+				<td class="selection">
+					<input type="radio" name="miniipip1" id="miniipip1_1" value="1" /><label for="miniipip1_1"> 1</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip1" id="miniipip1_2" value="2" /><label for="miniipip1_2"> 2</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip1" id="miniipip1_3" value="3" /><label for="miniipip1_3"> 3</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip1" id="miniipip1_4" value="4" /><label for="miniipip1_4"> 4</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip1" id="miniipip1_5" value="5" /><label for="miniipip1_5"> 5</label>
+				</td>
+			</tr>
+			<tr><td>Sympathize with others' feelings</td>
+				<td class="selection">
+					<input type="radio" name="miniipip2" id="miniipip2_1" value="1" /><label for="miniipip2_1"> 1</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip2" id="miniipip2_2" value="2" /><label for="miniipip2_2"> 2</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip2" id="miniipip2_3" value="3" /><label for="miniipip2_3"> 3</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip2" id="miniipip2_4" value="4" /><label for="miniipip2_4"> 4</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip2" id="miniipip2_5" value="5" /><label for="miniipip2_5"> 5</label>
+				</td>
+			</tr>
+			<tr><td>Get chores done right away</td>
+				<td class="selection">
+					<input type="radio" name="miniipip3" id="miniipip3_1" value="1" /><label for="miniipip3_1"> 1</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip3" id="miniipip3_2" value="2" /><label for="miniipip3_2"> 2</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip3" id="miniipip3_3" value="3" /><label for="miniipip3_3"> 3</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip3" id="miniipip3_4" value="4" /><label for="miniipip3_4"> 4</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip3" id="miniipip3_5" value="5" /><label for="miniipip3_5"> 5</label>
+				</td>
+			</tr>
+			<tr><td>Have frequent mood swings</td>
+				<td class="selection">
+					<input type="radio" name="miniipip4" id="miniipip4_1" value="1" /><label for="miniipip4_1"> 1</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip4" id="miniipip4_2" value="2" /><label for="miniipip4_2"> 2</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip4" id="miniipip4_3" value="3" /><label for="miniipip4_3"> 3</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip4" id="miniipip4_4" value="4" /><label for="miniipip4_4"> 4</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip4" id="miniipip4_5" value="5" /><label for="miniipip4_5"> 5</label>
+				</td>
+			</tr>
+			<tr><td>Have a vivid imagination</td>
+				<td class="selection">
+					<input type="radio" name="miniipip5" id="miniipip5_1" value="1" /><label for="miniipip5_1"> 1</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip5" id="miniipip5_2" value="2" /><label for="miniipip5_2"> 2</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip5" id="miniipip5_3" value="3" /><label for="miniipip5_3"> 3</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip5" id="miniipip5_4" value="4" /><label for="miniipip5_4"> 4</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip5" id="miniipip5_5" value="5" /><label for="miniipip5_5"> 5</label>
+				</td>
+			</tr>
+			<tr><td>Don't talk a lot</td>
+				<td class="selection">
+					<input type="radio" name="miniipip6" id="miniipip6_1" value="1" /><label for="miniipip6_1"> 1</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip6" id="miniipip6_2" value="2" /><label for="miniipip6_2"> 2</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip6" id="miniipip6_3" value="3" /><label for="miniipip6_3"> 3</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip6" id="miniipip6_4" value="4" /><label for="miniipip6_4"> 4</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip6" id="miniipip6_5" value="5" /><label for="miniipip6_5"> 5</label>
+				</td>
+			</tr>
+			<tr><td>Am not interested in other people's problems</td>
+				<td class="selection">
+					<input type="radio" name="miniipip7" id="miniipip7_1" value="1" /><label for="miniipip7_1"> 1</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip7" id="miniipip7_2" value="2" /><label for="miniipip7_2"> 2</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip7" id="miniipip7_3" value="3" /><label for="miniipip7_3"> 3</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip7" id="miniipip7_4" value="4" /><label for="miniipip7_4"> 4</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip7" id="miniipip7_5" value="5" /><label for="miniipip7_5"> 5</label>
+				</td>
+			</tr>
+			<tr><td>Often forget to put things back in their proper place</td>
+				<td class="selection">
+					<input type="radio" name="miniipip8" id="miniipip8_1" value="1" /><label for="miniipip8_1"> 1</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip8" id="miniipip8_2" value="2" /><label for="miniipip8_2"> 2</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip8" id="miniipip8_3" value="3" /><label for="miniipip8_3"> 3</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip8" id="miniipip8_4" value="4" /><label for="miniipip8_4"> 4</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip8" id="miniipip8_5" value="5" /><label for="miniipip8_5"> 5</label>
+				</td>
+			</tr>
+			<tr><td>Am relaxed most of the time</td>
+				<td class="selection">
+					<input type="radio" name="miniipip9" id="miniipip9_1" value="1" /><label for="miniipip9_1"> 1</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip9" id="miniipip9_2" value="2" /><label for="miniipip9_2"> 2</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip9" id="miniipip9_3" value="3" /><label for="miniipip9_3"> 3</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip9" id="miniipip9_4" value="4" /><label for="miniipip9_4"> 4</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip9" id="miniipip9_5" value="5" /><label for="miniipip9_5"> 5</label>
+				</td>
+			</tr>
+			<tr><td>Am not interested in abstract ideas</td>
+				<td class="selection">
+					<input type="radio" name="miniipip10" id="miniipip10_1" value="1" /><label for="miniipip10_1"> 1</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip10" id="miniipip10_2" value="2" /><label for="miniipip10_2"> 2</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip10" id="miniipip10_3" value="3" /><label for="miniipip10_3"> 3</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip10" id="miniipip10_4" value="4" /><label for="miniipip10_4"> 4</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip10" id="miniipip10_5" value="5" /><label for="miniipip10_5"> 5</label>
+				</td>
+			</tr>
+			</table>
+			<table class="bigfivetab">
+			<tr><td></td><th>Very inaccurate</th><th>Moderately Inaccurate</th><th>Neither Inaccurate nor Accurate</th><th>Moderately Accurate</th><th>Very Accurate</th></tr>
+			<tr><td>Talk to a lot of different people at parties</td>
+				<td class="selection">
+					<input type="radio" name="miniipip11" id="miniipip11_1" value="1" /><label for="miniipip11_1"> 1</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip11" id="miniipip11_2" value="2" /><label for="miniipip11_2"> 2</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip11" id="miniipip11_3" value="3" /><label for="miniipip11_3"> 3</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip11" id="miniipip11_4" value="4" /><label for="miniipip11_4"> 4</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip11" id="miniipip11_5" value="5" /><label for="miniipip11_5"> 5</label>
+				</td>
+			</tr>
+			<tr><td>Feel others' emotions</td>
+				<td class="selection">
+					<input type="radio" name="miniipip12" id="miniipip12_1" value="1" /><label for="miniipip12_1"> 1</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip12" id="miniipip12_2" value="2" /><label for="miniipip12_2"> 2</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip12" id="miniipip12_3" value="3" /><label for="miniipip12_3"> 3</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip12" id="miniipip12_4" value="4" /><label for="miniipip12_4"> 4</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip12" id="miniipip12_5" value="5" /><label for="miniipip12_5"> 5</label>
+				</td>
+			</tr>
+			<tr><td>Like order</td>
+				<td class="selection">
+					<input type="radio" name="miniipip13" id="miniipip13_1" value="1" /><label for="miniipip13_1"> 1</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip13" id="miniipip13_2" value="2" /><label for="miniipip13_2"> 2</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip13" id="miniipip13_3" value="3" /><label for="miniipip13_3"> 3</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip13" id="miniipip13_4" value="4" /><label for="miniipip13_4"> 4</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip13" id="miniipip13_5" value="5" /><label for="miniipip13_5"> 5</label>
+				</td>
+			</tr>
+			<tr><td>Get upset easily</td>
+				<td class="selection">
+					<input type="radio" name="miniipip14" id="miniipip14_1" value="1" /><label for="miniipip14_1"> 1</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip14" id="miniipip14_2" value="2" /><label for="miniipip14_2"> 2</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip14" id="miniipip14_3" value="3" /><label for="miniipip14_3"> 3</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip14" id="miniipip14_4" value="4" /><label for="miniipip14_4"> 4</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip14" id="miniipip14_5" value="5" /><label for="miniipip14_5"> 5</label>
+				</td>
+			</tr>
+			<tr><td>Have difficulty understanding abstract ideas</td>
+				<td class="selection">
+					<input type="radio" name="miniipip15" id="miniipip15_1" value="1" /><label for="miniipip15_1"> 1</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip15" id="miniipip15_2" value="2" /><label for="miniipip15_2"> 2</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip15" id="miniipip15_3" value="3" /><label for="miniipip15_3"> 3</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip15" id="miniipip15_4" value="4" /><label for="miniipip15_4"> 4</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip15" id="miniipip15_5" value="5" /><label for="miniipip15_5"> 5</label>
+				</td>
+			</tr>
+			<tr><td>Keep in the background</td>
+				<td class="selection">
+					<input type="radio" name="miniipip16" id="miniipip16_1" value="1" /><label for="miniipip16_1"> 1</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip16" id="miniipip16_2" value="2" /><label for="miniipip16_2"> 2</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip16" id="miniipip16_3" value="3" /><label for="miniipip16_3"> 3</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip16" id="miniipip16_4" value="4" /><label for="miniipip16_4"> 4</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip16" id="miniipip16_5" value="5" /><label for="miniipip16_5"> 5</label>
+				</td>
+			</tr>
+			<tr><td>Am not really interested in others</td>
+				<td class="selection">
+					<input type="radio" name="miniipip17" id="miniipip17_1" value="1" /><label for="miniipip17_1"> 1</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip17" id="miniipip17_2" value="2" /><label for="miniipip17_2"> 2</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip17" id="miniipip17_3" value="3" /><label for="miniipip17_3"> 3</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip17" id="miniipip17_4" value="4" /><label for="miniipip17_4"> 4</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip17" id="miniipip17_5" value="5" /><label for="miniipip17_5"> 5</label>
+				</td>
+			</tr>
+			<tr><td>Make a mess of things</td>
+				<td class="selection">
+					<input type="radio" name="miniipip18" id="miniipip18_1" value="1" /><label for="miniipip18_1"> 1</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip18" id="miniipip18_2" value="2" /><label for="miniipip18_2"> 2</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip18" id="miniipip18_3" value="3" /><label for="miniipip18_3"> 3</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip18" id="miniipip18_4" value="4" /><label for="miniipip18_4"> 4</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip18" id="miniipip18_5" value="5" /><label for="miniipip18_5"> 5</label>
+				</td>
+			</tr>
+			<tr><td>Seldom feel blue</td>
+				<td class="selection">
+					<input type="radio" name="miniipip19" id="miniipip19_1" value="1" /><label for="miniipip19_1"> 1</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip19" id="miniipip19_2" value="2" /><label for="miniipip19_2"> 2</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip19" id="miniipip19_3" value="3" /><label for="miniipip19_3"> 3</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip19" id="miniipip19_4" value="4" /><label for="miniipip19_4"> 4</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip19" id="miniipip19_5" value="5" /><label for="miniipip19_5"> 5</label>
+				</td>
+			</tr>
+			<tr><td>Do not have a good imagination</td>
+				<td class="selection">
+					<input type="radio" name="miniipip20" id="miniipip20_1" value="1" /><label for="miniipip20_1"> 1</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip20" id="miniipip20_2" value="2" /><label for="miniipip20_2"> 2</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip20" id="miniipip20_3" value="3" /><label for="miniipip20_3"> 3</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip20" id="miniipip20_4" value="4" /><label for="miniipip20_4"> 4</label>
+				</td><td class="selection">
+					<input type="radio" name="miniipip20" id="miniipip20_5" value="5" /><label for="miniipip20_5"> 5</label>
+				</td>
+			</tr>
+		</table>
+		<button type="button" class="topolprefs previous"/>&lsaquo;&lsaquo; Previous</button><button type="button" class="todemographics next"/>Next &rsaquo;&rsaquo;</button>
+	</fieldset>
+	<fieldset id="demographics">
+		<legend>Finally, please tell us a bit about your demographics.</legend>
+		<ol>
+			<li><strong>Sex:</strong><br />
+				<input type="radio" name="gender" value="m" id="gender_m"/><label for="gender_m">Male</label><br />
+				<input type="radio" name="gender" value="f" id="gender_f"/><label for="gender_f">Female</label><br />
+				<input type="radio" name="gender" value="0" id="gender_0"/><label for="gender_0">Prefer not to answer</label>
+			</li>
+			<li><strong>Age:</strong>
+				<input type="text" name="age" size="2" id="age"/><label for="age"> years</label>
+			</li>
+			<li><strong>Are you registered to vote in the United States?</strong><br />
+				<input type="radio" name="us" id="us_y" value="1"/><label for="us_y"> Yes, I am.</label><br />
+				<input type="radio" name="us" id="us_n" value="0"/><label for="us_n"> No, I am not.</label>
+			</li>
+			<button type="button" class="tobigfive previous"/>&lsaquo;&lsaquo; Previous</button><button class="next" id="submitbutton"/><strong>Submit</strong></button>
+			</ol>
+	</fieldset>
+</form></div>
+
+<div id="thanks">
+<p><strong>Thank you</strong> for helping us with our research.</p><p><a href="#" id="closetab">Click here to close this tab</a> and get started and begin using BALANCE.</p>
+</div>
+
+</div>
+</body>
+</html>

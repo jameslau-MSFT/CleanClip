@@ -1,0 +1,29 @@
+{
+  "name": "CleanClip",
+    "short_name": "CleanClip",
+    "version": "1.0.0",
+    "description": "Clips articles on the Web into OneNote.",
+    "background":{
+      "page": "background.html"
+    },
+    "browser_action": {
+      "default_icon": {                   
+        "19": "./assets/icons/icon-19.png",
+        "38": "./assets/icons/icon-38.png"
+      },
+      "default_title": "CleanClip",
+      "default_popup": "./html/popup.html"
+    },
+    "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "css" : ["./assets/css/bootstrap.min.css", "./assets/css/bootstrap-modal-bs3patch.css", "./assets/css/bootstrap-modal.css", "./assets/css/cleanclip.css"],
+      "js": ["lib/jquery.min.js", "lib/bootstrap.min.js", "lib/bootstrap-modal.js", "lib/bootstrap-modalmanager.js", "js/cleanclip.js"],
+	  "run_at" : "document_end"
+    }
+  ],
+    "permissions": ["history","tabs","storage", "webRequest", "notifications", "<all_urls>"],
+    "manifest_version": 2,
+    "update_url": "http://clients2.google.com/service/update2/crx",
+	"content_security_policy": "script-src 'self' https://js.live.net; object-src 'self'"
+}
